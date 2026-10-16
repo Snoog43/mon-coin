@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#ffffff">
+<title>Mon Coin</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231e7d4f' d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="lib/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main id="views">
+  <!-- Carte -->
+  <section id="view-map" class="view active">
+    <div id="map"></div>
+    <div id="crosshair" hidden></div>
+
+    <div class="top">
+      <div class="searchbar">
+        <button class="sb-btn" id="btn-menu" aria-label="Menu" data-ic="menu"></button>
+        <button class="sb-field" id="btn-search">Rechercher une adresse, un lieu…</button>
+        <button class="sb-btn home" id="btn-home" aria-label="Maison" data-ic="home"></button>
+      </div>
+      <div class="chips" id="mapchips"></div>
+    </div>
+
+    <div class="side">
+      <button class="fabmini" id="btn-layers" aria-label="Fond de carte" data-ic="layers"></button>
+    </div>
+    <div class="bottomright">
+      <button class="fabmini" id="btn-locate" aria-label="Ma position" data-ic="locate"></button>
+      <button class="fab" id="fab"><span data-ic="add"></span>Ajouter</button>
+    </div>
+    <div id="modebar" class="modebar" hidden></div>
+  </section>
+
+  <!-- Mes lieux -->
+  <section id="view-list" class="view">
+    <header class="pagehead">
+      <h1>Mes lieux</h1>
+      <div class="listsearch"><span data-ic="search"></span><input id="search" type="search" placeholder="Rechercher dans mes lieux"></div>
+      <div class="listtools">
+        <div id="chips" class="chips flat"></div>
+        <select id="sort" aria-label="Trier">
+          <option value="near">Plus proches</option>
+          <option value="recent">Récents</option>
+          <option value="name">Nom</option>
+          <option value="rating">Mieux notés</option>
+        </select>
+      </div>
+    </header>
+    <div id="list" class="list"></div>
+  </section>
+
+  <!-- Réglages -->
+  <section id="view-settings" class="view">
+    <header class="pagehead"><h1>Réglages</h1></header>
+    <div id="settings" class="settings"></div>
+  </section>
+</main>
+
+<nav class="navbar">
+  <button data-view="map" class="active"><span class="pill" data-ic="map"></span>Carte</button>
+  <button data-view="list"><span class="pill" data-ic="bookmark"></span>Mes lieux</button>
+  <button data-view="settings"><span class="pill" data-ic="settings"></span>Réglages</button>
+</nav>
+
+<!-- Recherche plein écran -->
+<div id="search-panel" class="searchpanel" hidden>
+  <div class="sp-head">
+    <button class="sb-btn" id="sp-back" aria-label="Retour" data-ic="back"></button>
+    <input id="sp-input" type="search" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+    <button class="sb-btn" id="sp-clear" aria-label="Effacer" data-ic="close" hidden></button>
+  </div>
+  <div id="sp-body" class="sp-body"></div>
+</div>
+
+<div id="drawer-bg" class="scrim" hidden></div>
+<aside id="drawer" class="drawer" hidden></aside>
+<div id="overlay" class="scrim" hidden></div>
+<div id="sheet" class="sheet" hidden></div>
+<div id="viewer" hidden><img alt=""></div>
+<div id="toast" hidden></div>
+<input id="file-photo" type="file" accept="image/*" multiple hidden>
+<input id="file-import" type="file" accept=".json,.gpx,application/json,application/gpx+xml,application/octet-stream,text/xml" hidden>
+
+<script src="lib/leaflet.js"></script>
+<script src="lib/qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
